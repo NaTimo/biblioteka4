@@ -7,6 +7,10 @@ class Genre(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    class Meta:
+        verbose_name = "Zanras"
+        verbose_name_plural = "Zanrai"
 class Book(models.Model):
     title = models.CharField(verbose_name="Pavadinimas", max_length=200)
     summary = models.TextField(verbose_name="Aprasymas", max_length=1000)
@@ -16,12 +20,20 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    class Meta:
+        verbose_name = "Knyga"
+        verbose_name_plural = "Knygos"
 class Author(models.Model):
     first_name = models.CharField(verbose_name="Vardas", max_length=100)
     last_name = models.CharField(verbose_name="Pavarde", max_length=100)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        verbose_name = "Autorius"
+        verbose_name_plural = "Autoriai"
 class BookInstace(models.Model):
     book = models.ForeignKey(to="Book", on_delete=models.CASCADE)
     uuid = models.UUIDField(verbose_name="UUID", default=uuid.uuid4, help_text="Unikalus ID knygos raktas")
@@ -43,3 +55,7 @@ class BookInstace(models.Model):
     )
     def __str__(self):
         return f"{self.book} - {self.uuid}"
+
+    class Meta:
+        verbose_name = "Uzsakyta preke"
+        verbose_name_plural = "Uzsakytos prekes"
