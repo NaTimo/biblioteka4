@@ -38,7 +38,7 @@ class Author(models.Model):
     class Meta:
         verbose_name = "Autorius"
         verbose_name_plural = "Autoriai"
-class BookInstace(models.Model):
+class BookInstance(models.Model):
     book = models.ForeignKey(to="Book", on_delete=models.CASCADE)
     uuid = models.UUIDField(verbose_name="UUID", default=uuid.uuid4, help_text="Unikalus ID knygos raktas")
     due_back = models.DateField(verbose_name="Bus prieinama", null=True)
